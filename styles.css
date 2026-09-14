@@ -7,3 +7,33 @@
 .coverage-groups{display:grid;gap:32px;margin-top:55px}.coverage-group{border:1px solid var(--line);border-radius:20px;padding:25px;background:rgba(255,255,255,.25)}.coverage-group h3{display:flex;align-items:center;gap:10px;margin:0 0 18px;font:600 20px "Fraunces",serif}.coverage-group h3 i{width:11px;height:11px;border-radius:50%;background:#409166}.coverage-group .neighborhoods{margin-top:0}.possible-list h3 i{background:var(--yellow)}.possible-list .neighborhoods span{border-color:#d4a72f;background:#fff8dc}.result.confirmed .result-icon{background:#cfe7d6;color:#17623f}.result.possible .result-icon{background:#ffedaf;color:#8b6500}.result.denied .result-icon{background:#f7d2ca;color:#a83b28}.result.denied .result-message{color:#812f23!important}.result.denied{border-color:#e6b5aa}.result [hidden]{display:none!important}
 
 .coverage-group h3 small{margin-left:auto;font:700 10px "DM Sans",sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);background:var(--paper);border-radius:999px;padding:7px 10px}
+
+
+/* Conversão, conteúdo local e acessibilidade */
+:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+button:disabled{opacity:.65;cursor:wait;transform:none}
+.fallback-whatsapp{display:inline-block;margin-top:4px;color:#17623f;font-weight:700;border-bottom:1px solid currentColor}
+.fallback-whatsapp[hidden]{display:none}
+.contact-cta{background:var(--orange);color:white;padding:88px max(5vw,74px);display:grid;grid-template-columns:1fr .72fr;gap:8vw;align-items:center}
+.contact-cta h2{font-size:clamp(40px,4.5vw,64px)}
+.contact-cta h2 em{color:var(--yellow)}
+.contact-cta>div>p:last-child{max-width:620px;color:#fff2ed}
+.contact-box{background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:34px;display:flex;flex-direction:column;align-items:flex-start;box-shadow:0 20px 55px rgba(77,27,14,.2)}
+.contact-box small{text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700}
+.contact-box strong{font:600 38px "Fraunces",serif;margin:7px 0 2px}
+.contact-box span{color:var(--muted);margin-bottom:24px}
+.contact-box .button{width:100%}
+.faq{padding:100px max(5vw,74px);display:grid;grid-template-columns:.75fr 1.25fr;gap:9vw;background:var(--paper)}
+.faq-heading h2{font-size:clamp(40px,4.2vw,62px)}
+.faq-list{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:22px 0}
+.faq summary{cursor:pointer;font-weight:700;list-style:none;padding-right:38px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:5px;top:-5px;font:600 27px "Fraunces",serif;color:var(--orange)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--muted);margin:14px 38px 0 0}
+.footer-hours{color:#9bb0a8;font-size:13px;margin-top:8px}
+.noscript{margin:0;padding:16px 20px;text-align:center;background:#fff2cc;color:var(--ink)}
+.noscript a{font-weight:700;text-decoration:underline}
+@media(max-width:950px){.contact-cta,.faq{grid-template-columns:1fr;gap:42px}}
+@media(max-width:620px){.contact-cta,.faq{padding:72px 20px}.contact-box{padding:26px 22px}.contact-box strong{font-size:32px}.faq-heading h2,.contact-cta h2{font-size:42px}}

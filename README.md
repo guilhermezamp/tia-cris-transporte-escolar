@@ -10,11 +10,16 @@ Site institucional responsivo da **Tia Cris Transporte Escolar**, com rotas na P
 - Comparação do bairro consultado com a área de atendimento
 - Encaminhamento personalizado para o WhatsApp
 - Layout responsivo e acessível
+- SEO técnico com título e descrição local, canonical, dados estruturados, robots.txt e sitemap.xml
+- FAQ com informações de atendimento
+- Mensagens de WhatsApp preenchidas com os dados necessários para avaliar a rota
 - Publicação automática pelo GitHub Pages
 
 ## Contato
 
-**Telefone e WhatsApp:** [11 99359-1031](https://wa.me/5511993591031)
+**Telefone e WhatsApp:** [11 99359-1031](https://wa.me/5511993591031)  
+**Horário de atendimento pelo WhatsApp:** das 9h às 19h  
+**Faixa escolar:** Educação Infantil ao Ensino Médio
 
 ## Publicação
 

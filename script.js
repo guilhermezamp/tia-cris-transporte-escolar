@@ -26,6 +26,7 @@ const address = document.querySelector("#result-address");
 const resultMessage = document.querySelector("#result-message");
 const whatsapp = document.querySelector("#result-whatsapp");
 const resultIcon = document.querySelector("#result-icon");
+const fallbackWhatsapp = document.querySelector("#cep-fallback-whatsapp");
 
 const normalize = value => (value || "")
   .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -56,6 +57,7 @@ form.addEventListener("submit", async event => {
   event.preventDefault();
   const cep = input.value.replace(/\D/g, "");
   result.hidden = true;
+  fallbackWhatsapp.hidden = true;
   statusBox.textContent = "";
 
   if (cep.length !== 8) {
@@ -66,6 +68,7 @@ form.addEventListener("submit", async event => {
 
   const button = form.querySelector("button");
   button.disabled = true;
+  button.setAttribute("aria-busy", "true");
   button.querySelector("span").textContent = "Consultando…";
   statusBox.textContent = "Buscando endereço no ViaCEP…";
 
@@ -87,10 +90,10 @@ form.addEventListener("submit", async event => {
     if (category === "confirmed") {
       resultLabel.textContent = "Região atendida";
       resultIcon.textContent = "✓";
-      resultMessage.textContent = "Ótima notícia! Este bairro faz parte da área atendida pela Tia Cris. Fale pelo WhatsApp para confirmar os detalhes da rota.";
+      resultMessage.textContent = "Ótima notícia! Este bairro faz parte da área atendida pela Tia Cris. Fale pelo WhatsApp, das 9h às 19h, para confirmar os detalhes da rota.";
       whatsapp.textContent = "Confirmar detalhes pelo WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Vi que o bairro está na área atendida e gostaria de confirmar os detalhes da rota.`
+        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Vi que o bairro está na área atendida e gostaria de confirmar os detalhes da rota.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
       )}`;
       whatsapp.hidden = false;
     } else if (category === "possible") {
@@ -99,7 +102,7 @@ form.addEventListener("submit", async event => {
       resultMessage.textContent = "Este bairro pode ser atendido, dependendo do endereço, horário e disponibilidade da rota. Consulte a Tia Cris pelo WhatsApp.";
       whatsapp.textContent = "Consultar disponibilidade no WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Gostaria de verificar a disponibilidade de atendimento para esta região.`
+        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Gostaria de verificar a disponibilidade de atendimento para esta região.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
       )}`;
       whatsapp.hidden = false;
     } else {
@@ -116,9 +119,11 @@ form.addEventListener("submit", async event => {
   } catch (error) {
     statusBox.textContent = error.message === "CEP não encontrado"
       ? "CEP não encontrado. Confira os números e tente novamente."
-      : "Não foi possível consultar agora. Tente novamente ou fale pelo WhatsApp.";
+      : "Não foi possível consultar agora. Você pode tentar novamente ou consultar diretamente pelo WhatsApp.";
+    fallbackWhatsapp.hidden = false;
   } finally {
     button.disabled = false;
+    button.removeAttribute("aria-busy");
     button.querySelector("span").textContent = "Consultar";
   }
 });
