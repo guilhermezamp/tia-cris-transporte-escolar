@@ -74,7 +74,16 @@
 
 <section class="coverage" id="regioes">
   <div class="section-heading"><div><p class="eyebrow"><i></i> Área de atendimento</p><h2>Da sua região<br>até a escola.</h2></div><p>Confira os bairros atendidos atualmente. Para endereços próximos, faça a consulta pelo CEP: a disponibilidade final é confirmada diretamente com a Tia Cris.</p></div>
-  <div class="neighborhoods"><span>COHAB I</span><span>Cidade Líder</span><span>Jardim Brasília</span><span>Jardim Eliane</span><span>Jardim Fernandes</span><span>Jardim Ipanema</span><span>Jardim Nossa Senhora do Carmo</span><span>Jardim Marília</span><span>Jardim Maringá</span><span>Jardim Santa Maria</span><span>Parque do Carmo</span><span>Parque Savoy City</span></div>
+  <div class="coverage-groups">
+    <div class="coverage-group confirmed-list">
+      <h3><i></i> Bairros atendidos</h3>
+      <div class="neighborhoods"><span>COHAB I</span><span>Cidade Líder</span><span>Jardim Brasília</span><span>Jardim Eliane</span><span>Jardim Fernandes</span><span>Jardim Ipanema</span><span>Jardim Nossa Senhora do Carmo</span><span>Jardim Marília</span><span>Jardim Maringá</span><span>Jardim Santa Maria</span><span>Parque do Carmo</span><span>Parque Savoy City</span><span>Vila Nhocuné</span><span>Jardim Samara</span><span>Patriarca</span><span>Vila Guilhermina</span><span>Artur Alvim</span><span>Cidade A. E. Carvalho</span><span>Itaquera</span></div>
+    </div>
+    <div class="coverage-group possible-list">
+      <h3><i></i> Atendimento sob consulta</h3>
+      <div class="neighborhoods"><span>Vila Talarico</span><span>Vila Eutália</span><span>Vila Matilde</span><span>Vila Dalila</span></div>
+    </div>
+  </div>
 </section>
 
 <section class="cep-section" id="cep">
@@ -87,7 +96,7 @@
     </form>
     <div id="cep-status" class="status" aria-live="polite"></div>
     <div id="cep-result" class="result" hidden>
-      <div class="result-title"><span id="result-icon" class="result-icon">✓</span><div><small>Bairro localizado</small><h3 id="result-neighborhood"></h3></div></div>
+      <div class="result-title"><span id="result-icon" class="result-icon">✓</span><div><small id="result-label">Bairro localizado</small><h3 id="result-neighborhood"></h3></div></div>
       <p id="result-address"></p><p id="result-message" class="result-message"></p>
       <a id="result-whatsapp" class="button whatsapp" href="#" target="_blank" rel="noopener">Confirmar pelo WhatsApp ↗</a>
     </div>
