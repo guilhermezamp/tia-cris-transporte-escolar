@@ -1,6 +1,6 @@
 # Tia Cris Transporte Escolar
 
-Site institucional responsivo da **Tia Cris Transporte Escolar**, com atendimento dedicado ao Colégio da Polícia Militar — Unidade Penha.
+Site institucional responsivo da **Tia Cris Transporte Escolar**, com rotas na Penha voltadas a famílias de profissionais da segurança pública.
 
 ## Recursos
 
@@ -20,4 +20,4 @@ Site institucional responsivo da **Tia Cris Transporte Escolar**, com atendiment
 
 O workflow `.github/workflows/pages.yml` publica o conteúdo da branch `main` no GitHub Pages após cada atualização.
 
-> Serviço independente, sem vínculo institucional com o Colégio da Polícia Militar — Unidade Penha.
+> Serviço independente, sem vínculo institucional com instituições de ensino, a Polícia Militar, a Guarda Civil Metropolitana ou outros órgãos públicos.
