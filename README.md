@@ -1,6 +1,6 @@
 # Tia Cris Transporte Escolar
 
-Site institucional responsivo da **Tia Cris Transporte Escolar**, com rotas na Penha voltadas a famílias de profissionais da segurança pública.
+Site institucional responsivo da **Tia Cris Transporte Escolar**, com rotas na Penha para estudantes e famílias de toda a comunidade.
 
 ## Recursos
 
