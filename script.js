@@ -1,7 +1,7 @@
 const PHONE = "5511993591031";
 const COVERED = [
   "COHAB I","Cidade Líder","Jardim Brasília","Jardim Eliane","Jardim Fernandes",
-  "Jardim Ipanema","Jardim Marília","Jardim Maringá","Jardim Santa Maria",
+  "Jardim Ipanema","Jardim Nossa Senhora do Carmo","Jardim Marília","Jardim Maringá","Jardim Santa Maria",
   "Parque do Carmo","Parque Savoy City"
 ];
 
