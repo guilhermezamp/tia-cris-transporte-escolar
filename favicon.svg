@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<rect width="64" height="64" rx="15" fill="#17382f"/>
+<path d="M8 20h29c6 0 9 3 12 9l5 11h3c2 0 4 2 4 4v5H6V26c0-3 1-5 2-6Z" fill="#efbd44" stroke="#fffdf7" stroke-width="2"/>
+<path d="M38 25h4c2 0 4 2 5 5l3 7H38V25Z" fill="#b8d7d1"/>
+<circle cx="18" cy="49" r="6" fill="#fffdf7"/><circle cx="48" cy="49" r="6" fill="#fffdf7"/>
+<text x="13" y="38" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#17382f">TC</text>
+</svg>
