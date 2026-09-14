@@ -1,19 +1,18 @@
 const PHONE = "5511993591031";
 
-const COVERAGE = {
-  confirmed: [
-    "COHAB I", "Cidade Líder", "Jardim Brasília", "Jardim Eliane",
-    "Jardim Fernandes", "Jardim Ipanema", "Jardim Nossa Senhora do Carmo",
-    "Jardim Marília", "Jardim Maringá", "Jardim Santa Maria",
-    "Parque do Carmo", "Parque Savoy City", "Vila Nhocuné",
-    "Jardim Samara", "Patriarca", "Vila Guilhermina", "Artur Alvim",
-    "Arthur Alvim", "Cidade A. E. Carvalho",
-    "Cidade Antônio Estevão de Carvalho", "Itaquera", "Vila Talarico", "Fazenda Aricanduva"
-  ],
-  possible: [
-    "Vila Eutália", "Vila Euthalia",
-    "Vila Matilde", "Vila Dalila"
-  ]
+const coveragePromise = fetch("cep-coverage.json", { cache: "no-cache" })
+  .then(response => {
+    if (!response.ok) throw new Error("Base de atendimento indisponível");
+    return response.json();
+  });
+
+const classifyCep = (cep, coverage) => {
+  const code = coverage.ceps[cep];
+  if (!code) return { category: "denied", serviceRegion: "" };
+
+  const category = code.startsWith("c") ? "confirmed" : "possible";
+  const serviceRegion = coverage.regions[Number(code.slice(1))] || "";
+  return { category, serviceRegion };
 };
 
 const form = document.querySelector("#cep-form");
@@ -27,24 +26,6 @@ const resultMessage = document.querySelector("#result-message");
 const whatsapp = document.querySelector("#result-whatsapp");
 const resultIcon = document.querySelector("#result-icon");
 const fallbackWhatsapp = document.querySelector("#cep-fallback-whatsapp");
-
-const normalize = value => (value || "")
-  .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  .toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-
-const matchesList = (bairro, list) => {
-  const searched = normalize(bairro);
-  return list.some(item => {
-    const listed = normalize(item);
-    return searched === listed || searched.includes(listed) || listed.includes(searched);
-  });
-};
-
-const classifyNeighborhood = bairro => {
-  if (matchesList(bairro, COVERAGE.confirmed)) return "confirmed";
-  if (matchesList(bairro, COVERAGE.possible)) return "possible";
-  return "denied";
-};
 
 input.addEventListener("input", event => {
   const digits = event.target.value.replace(/\D/g, "").slice(0, 8);
@@ -73,12 +54,15 @@ form.addEventListener("submit", async event => {
   statusBox.textContent = "Buscando endereço no ViaCEP…";
 
   try {
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const [response, coverage] = await Promise.all([
+      fetch(`https://viacep.com.br/ws/${cep}/json/`),
+      coveragePromise
+    ]);
     if (!response.ok) throw new Error("Falha na consulta");
     const data = await response.json();
     if (data.erro) throw new Error("CEP não encontrado");
 
-    const category = classifyNeighborhood(data.bairro);
+    const { category, serviceRegion } = classifyCep(cep, coverage);
     const fullAddress = [data.logradouro, data.bairro, data.localidade, data.uf]
       .filter(Boolean).join(" — ");
 
@@ -90,25 +74,25 @@ form.addEventListener("submit", async event => {
     if (category === "confirmed") {
       resultLabel.textContent = "Região atendida";
       resultIcon.textContent = "✓";
-      resultMessage.textContent = "Ótima notícia! Este bairro faz parte da área atendida pela Tia Cris. Fale pelo WhatsApp, de segunda a sexta, das 9h às 19h, para confirmar os detalhes da rota.";
+      resultMessage.textContent = `Ótima notícia! Este CEP faz parte da região atendida pela Tia Cris${serviceRegion ? ` (${serviceRegion})` : ""}. Fale pelo WhatsApp, de segunda a sexta, das 9h às 19h, para confirmar os detalhes da rota.`;
       whatsapp.textContent = "Confirmar detalhes pelo WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Vi que o bairro está na área atendida e gostaria de confirmar os detalhes da rota.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
+        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Vi que o CEP está na área atendida e gostaria de confirmar os detalhes da rota.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
       )}`;
       whatsapp.hidden = false;
     } else if (category === "possible") {
       resultLabel.textContent = "Atendimento sob consulta";
       resultIcon.textContent = "!";
-      resultMessage.textContent = "Este bairro pode ser atendido, dependendo do endereço, horário e disponibilidade da rota. Consulte a Tia Cris pelo WhatsApp.";
+      resultMessage.textContent = `Este CEP está sob consulta${serviceRegion ? ` na região de ${serviceRegion}` : ""}. O atendimento depende do endereço, horário e disponibilidade da rota. Consulte a Tia Cris pelo WhatsApp.`;
       whatsapp.textContent = "Consultar disponibilidade no WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Gostaria de verificar a disponibilidade de atendimento para esta região.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
+        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Gostaria de verificar a disponibilidade de atendimento para este CEP.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
       )}`;
       whatsapp.hidden = false;
     } else {
       resultLabel.textContent = "Região não atendida";
       resultIcon.textContent = "×";
-      resultMessage.textContent = "Infelizmente, no momento a Tia Cris não realiza atendimento neste bairro. Agradecemos seu interesse e a consulta.";
+      resultMessage.textContent = "Infelizmente, no momento a Tia Cris não realiza atendimento neste CEP. Agradecemos seu interesse e a consulta.";
       whatsapp.hidden = true;
       whatsapp.removeAttribute("href");
     }
