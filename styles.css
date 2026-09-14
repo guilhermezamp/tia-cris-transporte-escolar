@@ -37,3 +37,5 @@ button:disabled{opacity:.65;cursor:wait;transform:none}
 .noscript a{font-weight:700;text-decoration:underline}
 @media(max-width:950px){.contact-cta,.faq{grid-template-columns:1fr;gap:42px}}
 @media(max-width:620px){.contact-cta,.faq{padding:72px 20px}.contact-box{padding:26px 22px}.contact-box strong{font-size:32px}.faq-heading h2,.contact-cta h2{font-size:42px}}
+
+.privacy-note{font-size:11px;color:#7a8580}
