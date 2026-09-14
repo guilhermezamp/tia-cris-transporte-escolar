@@ -8,10 +8,10 @@ const COVERAGE = {
     "Parque do Carmo", "Parque Savoy City", "Vila Nhocuné",
     "Jardim Samara", "Patriarca", "Vila Guilhermina", "Artur Alvim",
     "Arthur Alvim", "Cidade A. E. Carvalho",
-    "Cidade Antônio Estevão de Carvalho", "Itaquera"
+    "Cidade Antônio Estevão de Carvalho", "Itaquera", "Vila Talarico"
   ],
   possible: [
-    "Vila Talarico", "Vila Eutália", "Vila Euthalia",
+    "Vila Eutália", "Vila Euthalia",
     "Vila Matilde", "Vila Dalila"
   ]
 };
