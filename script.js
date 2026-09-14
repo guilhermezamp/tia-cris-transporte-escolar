@@ -90,7 +90,7 @@ form.addEventListener("submit", async event => {
     if (category === "confirmed") {
       resultLabel.textContent = "Região atendida";
       resultIcon.textContent = "✓";
-      resultMessage.textContent = "Ótima notícia! Este bairro faz parte da área atendida pela Tia Cris. Fale pelo WhatsApp, das 9h às 19h, para confirmar os detalhes da rota.";
+      resultMessage.textContent = "Ótima notícia! Este bairro faz parte da área atendida pela Tia Cris. Fale pelo WhatsApp, de segunda a sexta, das 9h às 19h, para confirmar os detalhes da rota.";
       whatsapp.textContent = "Confirmar detalhes pelo WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
         `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Vi que o bairro está na área atendida e gostaria de confirmar os detalhes da rota.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`

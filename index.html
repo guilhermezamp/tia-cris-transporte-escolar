@@ -41,7 +41,13 @@
           "@type": "ContactPoint",
           "telephone": "+55 11 99359-1031",
           "contactType": "atendimento pelo WhatsApp",
-          "availableLanguage": "Portuguese"
+          "availableLanguage": "Portuguese",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
         }
       },
       {
@@ -144,7 +150,7 @@
 </section>
 
 <section class="cep-section" id="cep">
-  <div class="cep-intro"><p class="eyebrow light"><i></i> Consulta rápida</p><h2>Digite seu CEP.<br><em>A gente verifica a região.</em></h2><p>A consulta usa o ViaCEP para identificar automaticamente o bairro. Em seguida, envie o endereço para confirmação pelo WhatsApp, com atendimento das 9h às 19h.</p></div>
+  <div class="cep-intro"><p class="eyebrow light"><i></i> Consulta rápida</p><h2>Digite seu CEP.<br><em>A gente verifica a região.</em></h2><p>A consulta usa o ViaCEP para identificar automaticamente o bairro. Em seguida, envie o endereço para confirmação pelo WhatsApp, com atendimento de segunda a sexta, das 9h às 19h.</p></div>
   <div class="cep-card">
     <form id="cep-form" novalidate>
       <label for="cep-input">Qual é o CEP do endereço?</label>
@@ -170,7 +176,7 @@
   </div>
   <div class="contact-box">
     <small>Atendimento pelo WhatsApp</small>
-    <strong>das 9h às 19h</strong>
+    <strong>segunda a sexta, das 9h às 19h</strong>
     <span>Educação Infantil ao Ensino Médio</span>
     <a class="button whatsapp" href="https://wa.me/5511993591031?text=Ol%C3%A1%2C%20Tia%20Cris!%20Encontrei%20o%20site%20e%20gostaria%20de%20consultar%20uma%20rota.%0A%0ABairro%20ou%20CEP%3A%0AInstitui%C3%A7%C3%A3o%20de%20ensino%3A%0ATurno%3A%0AS%C3%A9rie%20ou%20etapa%20escolar%3A" target="_blank" rel="noopener">Consultar uma rota pelo WhatsApp ↗</a>
   </div>
@@ -196,7 +202,7 @@
     </details>
     <details>
       <summary>Qual é o horário de atendimento?</summary>
-      <p>O contato pelo WhatsApp é realizado das 9h às 19h.</p>
+      <p>O contato pelo WhatsApp é realizado de segunda a sexta, das 9h às 19h.</p>
     </details>
   </div>
 </section>
@@ -204,7 +210,7 @@
 
 <footer>
   <div><a class="brand footer-brand" href="#inicio"><svg class="logo" viewBox="0 0 92 64" aria-hidden="true"><path class="body" d="M9 17h44c8 0 12 4 15 10l8 17h5a4 4 0 0 1 4 4v4H7V25a8 8 0 0 1 2-8Z"/><path class="window" d="M53 22h5c3 0 5 2 7 6l4 9H53V22Z"/><path class="line" d="M13 40h34V22H13"/><circle class="wheel" cx="23" cy="52" r="7"/><circle class="wheel" cx="68" cy="52" r="7"/><text x="18" y="36">TC</text></svg><span><strong>Tia Cris</strong><small>Transporte Escolar</small></span></a><p>Experiência, documentação e cuidado em cada trajeto.</p></div>
-  <div class="footer-contact"><small>Atendimento pelo WhatsApp</small><a href="https://wa.me/5511993591031?text=Ol%C3%A1%2C%20Tia%20Cris!%20Encontrei%20o%20site%20e%20gostaria%20de%20saber%20sobre%20o%20transporte%20escolar.%20Pode%20me%20orientar%20sobre%20as%20rotas%20e%20a%20disponibilidade%3F" target="_blank" rel="noopener" aria-label="Conversar com a Tia Cris pelo WhatsApp">11 99359-1031</a><a href="https://wa.me/5511993591031?text=Ol%C3%A1%2C%20Tia%20Cris!%20Encontrei%20o%20site%20e%20gostaria%20de%20consultar%20uma%20rota.%0A%0ABairro%20ou%20CEP%3A%0AInstitui%C3%A7%C3%A3o%20de%20ensino%3A%0ATurno%3A%0AS%C3%A9rie%20ou%20etapa%20escolar%3A" target="_blank" rel="noopener">WhatsApp ↗</a><span class="footer-hours">das 9h às 19h</span></div>
+  <div class="footer-contact"><small>Atendimento pelo WhatsApp</small><a href="https://wa.me/5511993591031?text=Ol%C3%A1%2C%20Tia%20Cris!%20Encontrei%20o%20site%20e%20gostaria%20de%20saber%20sobre%20o%20transporte%20escolar.%20Pode%20me%20orientar%20sobre%20as%20rotas%20e%20a%20disponibilidade%3F" target="_blank" rel="noopener" aria-label="Conversar com a Tia Cris pelo WhatsApp">11 99359-1031</a><a href="https://wa.me/5511993591031?text=Ol%C3%A1%2C%20Tia%20Cris!%20Encontrei%20o%20site%20e%20gostaria%20de%20consultar%20uma%20rota.%0A%0ABairro%20ou%20CEP%3A%0AInstitui%C3%A7%C3%A3o%20de%20ensino%3A%0ATurno%3A%0AS%C3%A9rie%20ou%20etapa%20escolar%3A" target="_blank" rel="noopener">WhatsApp ↗</a><span class="footer-hours">segunda a sexta, das 9h às 19h</span></div>
   <div class="disclaimer"><p>Serviço de transporte escolar independente, sem vínculo institucional, representação ou responsabilidade de instituições de ensino, da Polícia Militar, da Guarda Civil Metropolitana ou de outros órgãos públicos.</p><p>© <span id="year"></span> Tia Cris Transporte Escolar.</p></div>
 </footer>
 <a class="floating" href="https://wa.me/5511993591031?text=Ol%C3%A1%2C%20Tia%20Cris!%20Encontrei%20o%20site%20e%20gostaria%20de%20consultar%20uma%20rota.%0A%0ABairro%20ou%20CEP%3A%0AInstitui%C3%A7%C3%A3o%20de%20ensino%3A%0ATurno%3A%0AS%C3%A9rie%20ou%20etapa%20escolar%3A" target="_blank" rel="noopener" aria-label="Conversar com a Tia Cris pelo WhatsApp">WhatsApp <span>↗</span></a>
