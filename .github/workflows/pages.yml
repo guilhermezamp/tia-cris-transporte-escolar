@@ -35,3 +35,9 @@ jobs:
       - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notificar buscadores pelo IndexNow
+        if: success()
+        run: >-
+          curl --fail --silent --show-error
+          "https://api.indexnow.org/indexnow?url=https%3A%2F%2Ftiacristransporteescolar.com.br%2F&key=8040c9edd8409c80c2e6f0d6afb17d7f"
