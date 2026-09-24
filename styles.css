@@ -39,3 +39,25 @@ button:disabled{opacity:.65;cursor:wait;transform:none}
 @media(max-width:620px){.contact-cta,.faq{padding:72px 20px}.contact-box{padding:26px 22px}.contact-box strong{font-size:32px}.faq-heading h2,.contact-cta h2{font-size:42px}}
 
 .privacy-note{font-size:11px;color:#7a8580}
+
+
+/* Clareza institucional e página de rota */
+.independence-note{max-width:690px;margin:-10px 0 25px;padding:12px 15px;border-left:3px solid var(--orange);background:rgba(255,255,255,.48);color:#4d6159;font-size:13px}
+.independence-copy{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--cream);font-size:14px;color:var(--ink)!important}
+.school-links{display:flex;flex-wrap:wrap;gap:24px}
+.route-hero{padding:96px max(5vw,74px);background:var(--cream);display:grid;grid-template-columns:1.25fr .75fr;gap:8vw;align-items:center}
+.route-hero h1{font-size:clamp(45px,5vw,72px)}
+.route-hero .lead{max-width:760px}
+.route-card{background:var(--green);color:#fff;border-radius:var(--radius);padding:34px;box-shadow:0 20px 55px rgba(23,56,47,.18)}
+.route-card small{display:block;color:#b7c9c2;text-transform:uppercase;letter-spacing:.13em;font-weight:700}
+.route-card strong{display:block;font:600 30px "Fraunces",serif;margin:8px 0 22px}
+.route-card ul{list-style:none;margin:0;padding:0;border-top:1px solid #ffffff22}
+.route-card li{padding:14px 0;border-bottom:1px solid #ffffff22}
+.route-card .button{width:100%;margin-top:26px}
+.independent-panel{padding:80px max(5vw,74px);background:var(--paper)}
+.independent-panel>div{max-width:1050px;margin:auto;border:1px solid var(--line);border-left:6px solid var(--orange);border-radius:18px;padding:30px 34px;background:var(--cream)}
+.independent-panel h2{font-size:clamp(32px,3vw,46px);margin-bottom:15px}
+.independent-panel p{color:var(--muted);margin:0}
+.back-link{font-weight:700;font-size:13px}
+@media(max-width:950px){.route-hero{grid-template-columns:1fr;gap:42px}}
+@media(max-width:620px){.route-hero,.independent-panel{padding:64px 20px}.route-hero h1{font-size:44px}.school-links{gap:12px}.independent-panel>div{padding:24px 22px}}
