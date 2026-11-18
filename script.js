@@ -81,7 +81,7 @@ form.addEventListener("submit", async event => {
       resultMessage.textContent = `Ótima notícia! Este CEP faz parte da região atendida pela Tia Cris${serviceRegion ? ` (${serviceRegion})` : ""}. Fale pelo WhatsApp, de segunda a sexta, das 9h às 19h, para confirmar os detalhes da rota.`;
       whatsapp.textContent = "Confirmar detalhes pelo WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Vi que o CEP está na área atendida e gostaria de confirmar os detalhes da rota.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
+        `Olá, Tia Cris! Consultei a cobertura no site e gostaria de confirmar os detalhes da rota.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
       )}`;
       whatsapp.hidden = false;
     } else if (category === "possible") {
@@ -90,7 +90,7 @@ form.addEventListener("submit", async event => {
       resultMessage.textContent = `Este CEP está sob consulta${serviceRegion ? ` na região de ${serviceRegion}` : ""}. O atendimento depende do endereço, horário e disponibilidade da rota. Consulte a Tia Cris pelo WhatsApp.`;
       whatsapp.textContent = "Consultar disponibilidade no WhatsApp ↗";
       whatsapp.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-        `Olá, Tia Cris! Consultei o CEP ${input.value}. O endereço é ${fullAddress}. Gostaria de verificar a disponibilidade de atendimento para este CEP.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
+        `Olá, Tia Cris! Consultei a cobertura no site e gostaria de verificar a disponibilidade de atendimento para a minha região.\n\nNome do responsável:\nInstituição de ensino:\nTurno:\nSérie ou etapa escolar:`
       )}`;
       whatsapp.hidden = false;
     } else {
