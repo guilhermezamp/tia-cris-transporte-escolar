@@ -61,3 +61,12 @@ button:disabled{opacity:.65;cursor:wait;transform:none}
 .back-link{font-weight:700;font-size:13px}
 @media(max-width:950px){.route-hero{grid-template-columns:1fr;gap:42px}}
 @media(max-width:620px){.route-hero,.independent-panel{padding:64px 20px}.route-hero h1{font-size:44px}.school-links{gap:12px}.independent-panel>div{padding:24px 22px}}
+
+/* Campanha de matrículas 2027 */
+.enrollment-banner{background:var(--orange);color:#fff;padding:42px max(5vw,74px);display:flex;align-items:center;justify-content:space-between;gap:48px}
+.enrollment-banner h2{font-size:clamp(30px,3vw,46px);max-width:850px}
+.enrollment-banner p:last-child{margin:14px 0 0;color:#fff2ed;max-width:850px}
+.enrollment-banner .button{background:var(--green);white-space:nowrap}
+.enrollment-banner .button:hover{background:#0e2922}
+@media(max-width:820px){.enrollment-banner{align-items:flex-start;flex-direction:column;gap:24px}}
+@media(max-width:620px){.enrollment-banner{padding:46px 20px}.enrollment-banner .button{width:100%;white-space:normal;text-align:center}}
