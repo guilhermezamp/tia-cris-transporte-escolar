@@ -42,6 +42,7 @@ form.addEventListener("submit", async event => {
   statusBox.textContent = "";
 
   if (cep.length !== 8) {
+    window.trackSiteEvent?.("cep_invalid");
     statusBox.textContent = "Digite um CEP válido com 8 números.";
     input.focus();
     return;
@@ -63,6 +64,9 @@ form.addEventListener("submit", async event => {
     if (data.erro) throw new Error("CEP não encontrado");
 
     const { category, serviceRegion } = classifyCep(cep, coverage);
+    window.trackSiteEvent?.("cep_result", {
+      coverage_status: category
+    });
     const fullAddress = [data.logradouro, data.bairro, data.localidade, data.uf]
       .filter(Boolean).join(" — ");
 
@@ -101,6 +105,9 @@ form.addEventListener("submit", async event => {
     result.hidden = false;
     result.scrollIntoView({ behavior: "smooth", block: "nearest" });
   } catch (error) {
+    window.trackSiteEvent?.("cep_error", {
+      error_type: error.message === "CEP não encontrado" ? "not_found" : "service_unavailable"
+    });
     statusBox.textContent = error.message === "CEP não encontrado"
       ? "CEP não encontrado. Confira os números e tente novamente."
       : "Não foi possível consultar agora. Você pode tentar novamente ou consultar diretamente pelo WhatsApp.";
