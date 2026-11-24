@@ -70,3 +70,17 @@ button:disabled{opacity:.65;cursor:wait;transform:none}
 .enrollment-banner .button:hover{background:#0e2922}
 @media(max-width:820px){.enrollment-banner{align-items:flex-start;flex-direction:column;gap:24px}}
 @media(max-width:620px){.enrollment-banner{padding:46px 20px}.enrollment-banner .button{width:100%;white-space:normal;text-align:center}}
+
+
+/* Consulta de 2027: leitura, foco e quebra de textos em telas pequenas. */
+.campaign-trust{padding-top:48px;padding-bottom:48px}
+.campaign-trust article{min-height:0}
+.campaign-trust h3{margin-top:0}
+.route-hero .actions{flex-wrap:wrap}
+.cep-card{min-width:0}
+.result{overflow-wrap:anywhere}
+.result-title>div{min-width:0}
+.result-title small{font-size:.875rem;letter-spacing:.04em}
+.privacy-note,form>small{font-size:.875rem}
+.cep-section{scroll-margin-top:20px}
+.result:focus{outline:3px solid var(--yellow);outline-offset:8px}

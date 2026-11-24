@@ -1,7 +1,14 @@
 (() => {
+  if (window.trackSiteEvent) return;
+  const pageType = document.body?.dataset.pageType || "other";
   const sendEvent = (name, params = {}) => {
     if (typeof window.gtag !== "function") return;
-    window.gtag("event", name, params);
+    // Only categorical metadata: never forward a CEP, address or WhatsApp URL.
+    const safe = { page_path: window.location.pathname, page_type: pageType };
+    for (const key of ["coverage_status", "click_source", "error_type"]) {
+      if (typeof params[key] === "string") safe[key] = params[key];
+    }
+    window.gtag("event", name, safe);
   };
 
   window.trackSiteEvent = sendEvent;
@@ -18,12 +25,13 @@
   };
 
   document.addEventListener("click", event => {
-    const link = event.target.closest('a[href*="wa.me/"]');
+    const link = event.target.closest?.('a[href*="wa.me/"]');
     if (!link) return;
 
     sendEvent("whatsapp_click", {
       click_source: whatsappSource(link),
-      page_path: window.location.pathname
+      coverage_status: link.dataset.coverageStatus || "not_consulted"
     });
   });
 })();
+
