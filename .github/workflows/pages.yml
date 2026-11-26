@@ -15,11 +15,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  package:
     runs-on: ubuntu-latest
+    outputs:
+      artifact_name: ${{ steps.artifact.outputs.name }}
     steps:
       - name: Baixar arquivos
         uses: actions/checkout@v4
@@ -27,14 +26,28 @@ jobs:
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Nomear artefato da tentativa
+        id: artifact
+        run: echo "name=github-pages-${{ github.run_attempt }}" >> "$GITHUB_OUTPUT"
+
       - name: Preparar site
         uses: actions/upload-pages-artifact@v3
         with:
+          name: ${{ steps.artifact.outputs.name }}
           path: "."
 
+  deploy:
+    needs: package
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ needs.package.outputs.artifact_name }}
 
       - name: Notificar buscadores pelo IndexNow
         if: success()
